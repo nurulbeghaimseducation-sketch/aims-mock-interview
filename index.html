@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AIMS Education – Mock Interview Platform</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0e6f80"><link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="AIMS Mock">
 <style>
 :root{--bg:#eef6f8;--card:#fff;--tx:#12303a;--mu:#5b7580;--bd:#cfe0e5;--ac:#0e6f80;--ac2:#fff;--th:#b7791f;--sp:#0e6f80;--gold:#c9962b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1a20;--card:#102830;--tx:#e6f2f5;--mu:#8fb0ba;--bd:#1f4450;--ac:#2bb3c9;--ac2:#062229;--th:#f0b94a;--sp:#4fd1c5;--gold:#f0b94a}}
@@ -300,4 +301,5 @@ function kpDet(q){var e=kbFor(q);return e?'<details style="margin-top:8px"><summ
 $("list").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".kpb");if(!b)return;e.preventDefault();var p=b.closest("label").nextElementSibling,id=b.dataset.kp;if(p&&p.className=="kp"){var o=p.style.display!="block";p.style.display=o?"block":"none";if(o)kpOpen[id]=1;else delete kpOpen[id]}});
 function kpOn(){return STU?!!STU.kp:$("kpm").checked}
 function kpDraw(){var el=$("kps"),e=ph=="think"&&kpOn()?kbFor(Q[i]):null;if(!e){el.style.display="none";el.dataset.i="";return}if(el.dataset.i!=String(i)){el.innerHTML=kpHTML(e,true);el.dataset.i=String(i)}el.style.display=""}
+if("serviceWorker" in navigator&&location.protocol=="https:")navigator.serviceWorker.register("sw.js").catch(function(){});
 </script></body></html>
