@@ -320,6 +320,350 @@ body.stu #sv,body.stu #rv,body.stu #fv,body.stu #av,body.stu #adm{display:none!i
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.1/dist/umd/supabase.js"></script>
 <script>
+  <!DOCTYPE html>
+<html lang="en" data-theme="navy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIMS Education – Mock Interview Platform</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0e2b4a">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#eef4f9;--card:#fff;--tx:#0d1b2a;--mu:#5b7186;--bd:#cfe0e5;--ac:#0e2b4a;--ac2:#fff;--th:#c9962b;--sp:#0e6f80;--gold:#c9962b;--head:linear-gradient(135deg,#0e2b4a 0%,#06182b 100%);--shadow:0 4px 18px rgba(0,0,0,.10);--r:14px}
+:root[data-theme="navy"]{--bg:#eef4f9;--card:#fff;--tx:#0d1b2a;--mu:#5b7186;--bd:#cfdde8;--ac:#0e2b4a;--ac2:#fff;--gold:#c9962b;--head:linear-gradient(135deg,#0e2b4a,#06182b)}
+:root[data-theme="slate"]{--bg:#0f1419;--card:#1a2028;--tx:#e6edf3;--mu:#8b98a5;--bd:#2c3640;--ac:#4a9eff;--ac2:#fff;--gold:#ffb84d;--head:linear-gradient(135deg,#1f2933,#0f1419)}
+:root[data-theme="emerald"]{--bg:#eaf5ee;--card:#fff;--tx:#0d2818;--mu:#4d6a56;--bd:#c1dcc8;--ac:#0d5c3b;--ac2:#fff;--gold:#c9a227;--head:linear-gradient(135deg,#0d5c3b,#063a24)}
+:root[data-theme="crimson"]{--bg:#fef0f3;--card:#fff;--tx:#3d0a14;--mu:#8a4b5a;--bd:#f5c8d3;--ac:#9b1c3b;--ac2:#fff;--gold:#c9962b;--head:linear-gradient(135deg,#9b1c3b,#6e0f27)}
+:root[data-theme="clean"]{--bg:#f6f8fa;--card:#fff;--tx:#1f2328;--mu:#656d76;--bd:#d0d7de;--ac:#0e6f80;--ac2:#fff;--gold:#c9962b;--head:linear-gradient(135deg,#0e6f80,#0a5566)}
+:root[data-theme="purple"]{--bg:#f5f0ff;--card:#fff;--tx:#2b0a4a;--mu:#6b4d8a;--bd:#ddd0f0;--ac:#5b1a99;--ac2:#fff;--gold:#c9962b;--head:linear-gradient(135deg,#5b1a99,#3a0a66)}
+:root[data-theme="indigo"]{--bg:#eef1ff;--card:#fff;--tx:#0a1240;--mu:#4a5580;--bd:#c8d0ee;--ac:#3a44a1;--ac2:#fff;--gold:#ffb84d;--head:linear-gradient(135deg,#3a44a1,#1e2470)}
+:root[data-theme="amber"]{--bg:#fef8ec;--card:#fffdf7;--tx:#3d2400;--mu:#7a5820;--bd:#f0dfb8;--ac:#a8651f;--ac2:#fff;--gold:#e0b000;--head:linear-gradient(135deg,#a8651f,#7a4a12)}
+:root[data-theme="ocean"]{--bg:#e6f2ff;--card:#fff;--tx:#0c2540;--mu:#4a6a86;--bd:#c3d8ee;--ac:#0b6ebf;--ac2:#fff;--gold:#00a3a3;--head:linear-gradient(135deg,#0b6ebf,#00509e)}
+:root[data-theme="contrast"]{--bg:#000;--card:#0d0d0d;--tx:#fff;--mu:#c0c0c0;--bd:#3a3a3a;--ac:#ffde00;--ac2:#000;--gold:#ffde00;--head:linear-gradient(135deg,#000,#1a1a1a);--shadow:0 0 0 1px #ffde00}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;transition:background .2s,color .2s}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--head);color:#fff;border-bottom:3px solid var(--gold);padding:12px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;z-index:5;box-shadow:var(--shadow)}
+header h1{font-size:18px;margin:0;flex:1;font-weight:600}
+header h1 small{display:block;font-size:12px;opacity:.8;font-weight:400}
+header button{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:6px 12px;cursor:pointer;transition:all .15s}
+header button.p{background:var(--gold);color:#111;border-color:var(--gold);font-weight:700}
+header button:hover{background:rgba(255,255,255,.22)}
+header label{color:#fff;font-size:13px}
+header input[type=number]{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;width:64px;border-radius:8px;padding:4px 8px}
+header select{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 10px}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px 14px;cursor:pointer;transition:all .15s}
+button:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+button.p{background:var(--ac);color:var(--ac2);border-color:var(--ac);font-weight:600}
+button.danger{background:#dc2626;color:#fff;border-color:#dc2626}
+input,select,textarea{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px 10px;color:var(--tx)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:-1px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.brand{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--gold);border-radius:var(--r);padding:12px 16px;box-shadow:var(--shadow);margin-bottom:12px}
+.small{color:var(--mu);font-size:14px}
+details{background:var(--card);border:1px solid var(--bd);border-radius:10px;margin-bottom:10px;box-shadow:var(--shadow)}
+summary{padding:10px 14px;cursor:pointer;font-weight:600;display:flex;gap:10px;align-items:center}
+summary .n{color:var(--mu);font-weight:400;margin-left:auto;font-size:14px}
+.q{display:flex;gap:10px;padding:8px 14px;border-top:1px solid var(--bd);cursor:pointer;align-items:center}
+.bar{position:sticky;bottom:calc(env(safe-area-inset-bottom,0px)+8px);background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;box-shadow:var(--shadow);z-index:4}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.pill.registered{background:#e2e8f0;color:#334155}
+.pill.link_sent{background:#fef3c7;color:#92400e}
+.pill.started{background:#dbeafe;color:#1e40af}
+.pill.completed{background:#dcfce7;color:#166534}
+.pill.expired{background:#fee2e2;color:#991b1b}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);position:relative}
+.card h3{margin:0 0 6px;font-size:16px}
+.card .meta{font-size:13px;color:var(--mu)}
+.card .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.card .actions button{font-size:13px;padding:5px 10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:12px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:24px;color:var(--ac)}
+.stat span{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.04em}
+#sess{position:fixed;inset:0;background:var(--bg);display:none;flex-direction:column;padding:calc(env(safe-area-inset-top,0px)+16px) 20px calc(env(safe-area-inset-bottom,0px)+16px);z-index:20;border-top:6px solid var(--gold)}
+#sess.on{display:flex}
+#sess .top{display:flex;justify-content:space-between;color:var(--mu);gap:10px;flex-wrap:wrap;align-items:center}
+#sess .mid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:22px;max-width:960px;margin:0 auto;width:100%}
+#qt{font-size:clamp(24px,4.5vw,46px);line-height:1.25;font-weight:600}
+#ph{font-size:20px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+#tm{font-size:clamp(64px,14vw,140px);font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.pb{width:100%;height:12px;background:var(--bd);border-radius:6px;overflow:hidden}
+#pf{height:100%;width:100%;background:var(--th);transition:width .1s linear}
+.ctl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#cam{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px)+16px);width:clamp(130px,22vw,240px);border-radius:12px;border:3px solid var(--gold);box-shadow:var(--shadow);transform:scaleX(-1);background:#000;z-index:6}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:30;overflow:auto;padding:20px}
+.ov.on{display:flex}
+.ov .box{max-width:640px;width:100%;background:var(--card);padding:24px;border-radius:var(--r);border-top:6px solid var(--gold);box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:left}
+.ov .box h1{font-size:26px;margin:0 0 12px;color:var(--ac)}
+.tr-line{padding:8px 12px;border-bottom:1px solid var(--bd);cursor:pointer;display:flex;gap:10px}
+.tr-line:hover{background:var(--bg)}
+.tr-line .t{color:var(--mu);font-variant-numeric:tabular-nums;min-width:56px;font-size:13px}
+.tr-line.playing{background:var(--bg);border-left:3px solid var(--gold);padding-left:9px}
+#lvv{width:100%;max-width:720px;border-radius:10px;background:#000}
+.kp{display:none;margin:0 14px 10px 40px;padding:10px 14px;background:var(--bg);border:1px solid var(--bd);border-left:4px solid var(--gold);border-radius:8px;font-size:14px}
+.kp h4{margin:8px 0 4px;font-size:13px;color:var(--ac)}
+.kpb{border:1px solid var(--bd);background:var(--card);border-radius:8px;cursor:pointer;margin-left:auto;font-size:13px;padding:2px 8px;white-space:nowrap}
+#toast{position:fixed;left:50%;top:70px;transform:translateX(-50%);background:var(--ac);color:var(--ac2);padding:10px 16px;border-radius:10px;display:none;z-index:99;box-shadow:var(--shadow);max-width:90vw}
+.theme-picker{display:flex;gap:6px;flex-wrap:wrap}
+.theme-picker button{width:32px;height:32px;border-radius:50%;padding:0;border:2px solid var(--bd);position:relative}
+.theme-picker button.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.gcheck{font-size:12px;padding:4px 8px;margin-left:6px}
+.gissue{background:#fef3c7;border-left:3px solid #f59e0b;padding:8px 12px;border-radius:6px;margin:6px 0;font-size:13px}
+.gissue .sug{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:2px 8px;margin:2px;cursor:pointer;font-size:12px}
+.gissue .sug:hover{background:var(--ac);color:var(--ac2)}
+body[data-layout="standard"] #cam{top:auto;bottom:calc(env(safe-area-inset-bottom,0px)+16px);right:16px;left:auto}
+body[data-layout="compact"] #cam{top:calc(env(safe-area-inset-top,0px)+16px);left:16px;right:auto;bottom:auto}
+body[data-layout="compact"] #sess .top{justify-content:flex-end}
+body[data-layout="minimal"] #cam{opacity:.35;transition:opacity .3s}
+body[data-layout="minimal"]:hover #cam{opacity:1}
+body[data-layout="minimal"] #sess .mid{gap:10px}
+body[data-layout="split"] #sess .mid{flex-direction:row;justify-content:space-between;gap:30px;align-items:center}
+body[data-layout="split"] #cam{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:45%;max-width:420px;order:-1}
+body[data-layout="floating"] #cam{width:120px;border-radius:50%;opacity:.9}
+body[data-layout="promptFirst"] #qt{font-size:clamp(28px,5.5vw,56px)}
+body[data-layout="promptFirst"] #cam{width:110px}
+body[data-layout="sidebar"] #sess{padding-left:180px}
+body[data-layout="sidebar"]::before{content:"";position:fixed;left:0;top:0;bottom:0;width:170px;background:var(--head);border-right:3px solid var(--gold);z-index:19}
+body[data-layout="teleprompter"] #qt{text-align:left;line-height:1.6}
+body[data-layout="teleprompter"] #sess .mid{align-items:flex-start;justify-content:flex-start;padding-top:60px}
+body[data-layout="contrastDark"]{--bg:#000;--card:#111;--tx:#fff;--mu:#bbb;--bd:#333;--ac:#ffde00;--ac2:#000}
+body[data-layout="contrastDark"] #qt{font-weight:700}
+body[data-layout="focus"] #sess .mid{transition:all .6s cubic-bezier(.4,0,.2,1)}
+body[data-layout="focus"].focus-moved #sess .mid{justify-content:flex-end;align-items:flex-end;text-align:right;padding-right:280px;padding-bottom:20px}
+body[data-layout="focus"].focus-moved #qt{font-size:clamp(16px,2.5vw,24px);transition:font-size .6s}
+body[data-layout="focus"].focus-moved #cam{width:clamp(180px,26vw,280px);transition:all .6s}
+body[data-layout="focus"] #focus-counter{font-size:64px;font-weight:900;color:var(--gold);display:none}
+body[data-layout="focus"]:not(.focus-moved) #focus-counter{display:block}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{body{--bg:#fff;--card:#fff;--tx:#000;background:#fff}header,#sv,.bar,#sess{display:none!important}}
+body.stu header #tS,body.stu header #tR,body.stu header #tF,body.stu header #tA,body.stu header #tM,body.stu header #so,body.stu header #themeSel{display:none!important}
+body.stu #sv,body.stu #rv,body.stu #fv,body.stu #av,body.stu #adm{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <img src="logo.png" alt="AIMS" style="height:50px;border-radius:8px;background:#fff;padding:2px">
+  <h1>Mock Interview Platform<small>AIMS Education · Pre-CAS practice</small></h1>
+  <label class="small">Global max <input type="number" id="gmax" value="45" min="1" max="180" style="width:56px"> min</label>
+  <select id="themeSel" title="Theme">
+    <option value="navy">Navy Professional</option>
+    <option value="slate">Slate Dark</option>
+    <option value="emerald">Emerald Executive</option>
+    <option value="crimson">Crimson Corporate</option>
+    <option value="clean">Clean Light</option>
+    <option value="purple">Royal Purple</option>
+    <option value="indigo">Indigo Tech</option>
+    <option value="amber">Warm Amber</option>
+    <option value="ocean">Ocean Blue</option>
+    <option value="contrast">High Contrast Warm</option>
+  </select>
+  <button id="tS" class="p">Setup</button>
+  <button id="tStu">Students</button>
+  <button id="tQ">Questions</button>
+  <button id="tR">Sessions</button>
+  <button id="tF">Feedback form</button>
+  <button id="tA" style="display:none">Audit</button>
+  <button id="tM" style="display:none">Admin</button>
+  <span id="me" class="small"></span>
+  <button id="so" class="small" style="display:none">Sign out</button>
+</header>
+
+<div class="wrap" id="sv">
+  <div class="brand">
+    <b>Session branding</b>
+    <div class="row" style="margin-top:8px">
+      <input type="text" id="un" placeholder="University name" style="flex:1;min-width:200px">
+      <label class="small">Logo <input type="file" id="ul" accept="image/*"></label>
+      <img id="up" class="small" alt="" style="height:40px;border-radius:6px;display:none">
+      <button id="uc">Clear</button>
+    </div>
+  </div>
+  <div class="brand">
+    <b>Student & session details</b>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:8px">
+      <label class="small">Student name<input type="text" id="fN" style="width:100%"></label>
+      <label class="small">CRM number<input type="text" id="fC" style="width:100%"></label>
+      <label class="small">Intake / year<input type="text" id="fI" placeholder="Sept 2026" style="width:100%"></label>
+      <label class="small">Course title<input type="text" id="fT" style="width:100%"></label>
+      <label class="small">Interviewer name<input type="text" id="fV" style="width:100%"></label>
+      <label class="small">Date<input type="date" id="fD" style="width:100%"></label>
+      <label class="small">Link expiry (days)<input type="number" id="expDays" value="30" min="1" max="365" style="width:100%"></label>
+      <label class="small">Allow retry?<select id="allowRetry" style="width:100%"><option value="0">No (one attempt)</option><option value="1">Yes</option></select></label>
+      <label class="small">Max minutes<input type="number" id="maxMin" value="45" min="1" max="180" style="width:100%"></label>
+    </div>
+    <div style="margin-top:10px">
+      <b class="small">Student UI layout</b>
+      <div class="row" id="layoutPicker" style="margin-top:6px"></div>
+    </div>
+  </div>
+  <div class="row">
+    <input type="text" id="srch" placeholder="Search questions…" style="flex:1;min-width:180px">
+    <button id="all">Select all</button><button id="none">Clear</button>
+  </div>
+  <div id="list"></div>
+  <div class="row" style="margin-top:14px">
+    <input type="text" id="cu" placeholder="Add your own question…" style="flex:1;min-width:200px"><button id="add">Add</button>
+  </div>
+  <div class="bar">
+    <b id="cnt">0 selected</b>
+    <label class="small"><input type="checkbox" id="kpm"> Practice mode: show key points during think time</label>
+    <span style="flex:1"></span>
+    <button class="p" id="go">Preview interview ▶</button>
+    <button class="p" id="createStu">Create student link</button>
+  </div>
+  <div class="row" id="lkw" style="display:none;margin-top:10px">
+    <input type="text" id="lko" readonly style="flex:1;min-width:240px">
+    <button id="waShare" class="p">Share via WhatsApp</button>
+    <button id="cpLink">Copy</button>
+  </div>
+</div>
+
+<div class="wrap" id="stuv" style="display:none">
+  <div class="stats" id="stuStats"></div>
+  <div class="row"><b>Students</b><span style="flex:1"></span>
+    <input type="text" id="stuSearch" placeholder="Search students…" style="min-width:200px">
+    <select id="stuFilter"><option value="">All statuses</option><option value="registered">Registered</option><option value="link_sent">Link sent</option><option value="started">Started</option><option value="completed">Completed</option><option value="expired">Expired</option></select>
+  </div>
+  <div class="grid" id="stuList"></div>
+</div>
+
+<div class="wrap" id="qv" style="display:none">
+  <div class="row"><b>Question bank</b><span class="small">Admin edits master. Officers pick per student in Setup.</span><span style="flex:1"></span>
+    <button class="p" id="addPart">+ Add part</button>
+  </div>
+  <div id="qParts"></div>
+</div>
+
+<div class="wrap" id="rv" style="display:none">
+  <div id="lk"><p id="lkt"></p>
+    <div class="row">
+      <input type="text" id="rn" placeholder="Full name" style="display:none">
+      <input type="email" id="em" placeholder="Email" style="display:none">
+      <input type="password" id="pin" placeholder="Password">
+      <button class="p" id="pu">Sign in</button>
+      <button type="button" id="rg" class="small" style="display:none">Create an account</button>
+    </div>
+    <p id="lkm" class="small"></p>
+  </div>
+  <div id="ul2" style="display:none">
+    <div id="lv" class="brand"></div>
+    <div class="row"><label class="small">Import student file <input type="file" id="imp" accept=".aims"></label>
+      <span style="flex:1"></span>
+      <button id="refreshSess">Refresh</button>
+    </div>
+    <div id="lst"></div>
+    <div id="dt"></div>
+  </div>
+</div>
+
+<div class="wrap" id="fv" style="display:none">
+  <div class="brand"><b>Feedback form</b> <span class="small">Fill anytime. Downloads only; drafts kept on this device.</span></div>
+  <div class="brand">
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr))">
+      <label class="small">Student name<input type="text" id="fx_n" style="width:100%"></label>
+      <label class="small">CRM<input type="text" id="fx_c" style="width:100%"></label>
+      <label class="small">Course<input type="text" id="fx_t" style="width:100%"></label>
+      <label class="small">University<input type="text" id="fx_u" style="width:100%"></label>
+      <label class="small">Intake<input type="text" id="fx_i" style="width:100%"></label>
+      <label class="small">Interviewer<input type="text" id="fx_v" style="width:100%"></label>
+      <label class="small">Date<input type="date" id="fx_d" style="width:100%"></label>
+      <label class="small">University logo<input type="file" id="fx_lg" accept="image/*"></label>
+      <div><img id="fx_lp" alt="" style="height:44px;border-radius:6px;display:none"><button type="button" id="fx_lx" class="small">Remove logo</button></div>
+    </div>
+  </div>
+  <div id="fbs"></div>
+  <div class="row" style="margin-top:10px">
+    <button class="p" id="fxP">Download PDF</button>
+    <button id="fxJ">Download JPG</button>
+    <button id="fxW">Download Word</button>
+    <button id="fxC">Clear form</button>
+  </div>
+</div>
+
+<div class="wrap" id="av" style="display:none;max-width:1400px">
+  <div class="row"><b>Student mock audit</b><span class="small">Your audit tool, opened inside this page.</span><a id="aext" target="_blank" rel="noopener" class="small">Open in new tab</a></div>
+  <iframe id="afr" title="Student audit" style="width:100%;height:calc(100vh - 150px);min-height:480px;border:1px solid var(--bd);border-radius:10px;background:#fff" allow="clipboard-write; fullscreen"></iframe>
+</div>
+
+<div class="wrap" id="adm" style="display:none">
+  <div id="stf" class="brand"></div>
+  <div id="ret" class="brand"></div>
+</div>
+
+<div id="sess">
+  <video id="cam" muted playsinline autoplay></video>
+  <div class="top">
+    <span class="who"><img id="sl" src="" alt="" style="height:36px;border-radius:6px;display:none"><b id="sn" style="font-size:20px"></b></span>
+    <span>
+      <span id="rc" style="color:#dc2626;font-weight:700">● REC</span>
+      <span id="pos"></span>
+      <button id="pk">Show/hide question</button>
+      <button id="fs">Fullscreen</button>
+      <button id="end" class="danger">End</button>
+    </span>
+  </div>
+  <div class="mid">
+    <div id="ph"></div>
+    <div id="focus-counter"></div>
+    <div id="qt"></div>
+    <div id="kps" class="kp" style="display:none;max-width:760px"></div>
+    <div id="tm"></div>
+    <div class="pb"><div id="pf"></div></div>
+    <div class="ctl">
+      <button id="prev">◀ Prev</button>
+      <button id="pz">Pause</button>
+      <button id="rs">Restart</button>
+      <button id="sk">Start answering now</button>
+      <button class="p" id="nx">Next ▶</button>
+      <button id="fn">Finish interview</button>
+    </div>
+    <div class="small">Space=pause · → next · ← prev</div>
+  </div>
+</div>
+
+<div class="ov" id="gate"><div class="box">
+  <div id="gt"></div>
+  <label class="row" style="justify-content:center"><input type="checkbox" id="cons"> <span id="cons_t"></span></label>
+  <div class="row" style="justify-content:center"><button class="p" id="gs">Start interview</button><button id="gb">Back</button></div>
+</div></div>
+<div class="ov" id="fin"><div class="box">
+  <h1>Interview complete</h1>
+  <p>Thank you. Please press Save so your interviewer receives your session.</p>
+  <p id="fm" class="small"></p>
+  <button class="p" id="sv2">Save session</button>
+</div></div>
+
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.1/dist/umd/supabase.js"></script>
+<script>
+var CONFIG={SITE_URL:"",AUDIT_URL:"https://nurulbeghaimseducation-sketch.github.io/student-audit/",SUPABASE_URL:"https://litkmsiksywkbetftdds.supabase.co",SUPABASE_KEY:"sb_publishable_XySBGo7K45IgY6lpGLhAAg_KUh_1Y_R",CONSENT_VERSION:"v3-2026-11",CONSENT_TEXT:"I agree to be recorded (video and audio), that my interviewer may watch my session live, and that my recording, transcript and feedback are stored securely by AIMS Education for my interview preparation.",THEMES:['navy','slate','emerald','crimson','clean','purple','indigo','amber','ocean','contrast'],LAYOUTS:[{k:'standard',l:'Standard Executive'},{k:'focus',l:'Focus Pressured (10s move)'},{k:'compact',l:'Compact Corner'},{k:'minimal',l:'Minimalist Reader'},{k:'contrastDark',l:'High-Contrast Dark'},{k:'split',l:'Split Screen'},{k:'floating',l:'Floating Video'},{k:'promptFirst',l:'Prompt-First'},{k:'sidebar',l:'Corporate Sidebar'},{k:'teleprompter',l:'Clean Teleprompter'}],WHITELIST:['CAS','UKVI','pre-cas','precas','ATAS','IELTS','maintenance funds','maintenance','post-study work','PSW','GRAD','RQF','NQF','QAA','BRP','SOP','LOR','IHS','TB test','CAS number','NSS','QS','THE','AIMS','CRM','DS','SEV']};
+var D={"General":["Tell me about yourself.","What is your full name, date of birth, and passport number?","What are your father's and mother's names and dates of birth?","Can you show your ID or passport?","How are you feeling today?","Are you currently working? If so, what are your key responsibilities?","Why do you wish to resume your studies now, given that you are working?","Can you describe any significant achievements from your previous work experience?","What is the weather like today in Bangladesh?","What is your relationship status?","Do you plan to marry or start a new relationship within the next year?","Do you have any dependents who want to apply for the UK?","Did you use any agents for your application?","What is the name of your agent, and what help did you receive?","What is your email address?","Which email did UKVI use to call you for the interview?","Did you provide the same email address to the embassy and the university?","What are your plans for the next couple of weeks?","Can you show your room, if possible?","Do you have any scripted answers with you?","What is the name of your English language test and what is your score?","What is the most exciting or meaningful thing you've done in the past few days?","How do you stay updated on current trends and developments in your field?","Can you name any renowned or influential figures in your field, and how have they inspired you?","Can you briefly describe your academic background and previous studies?"],"Course":["What course are you applying for?","Why did you choose this course?","What are the modules in your course?","What modules will you study in your first year?","Can you explain some modules and how they will help in your career?","What is your favourite module, and why?","Which module is your least favourite?","Which module are you most excited about, and why?","Which module do you think will be challenging for you?","How many modules are there in your course?","Are there any optional modules? How many will you take?","What is the level of your course?","How will this course help you achieve your career goals?","What practical and theoretical skills will you learn from this course?","What is the accreditation of your course?","What is the assessment method for your course?","What is the placement year option, and how does it work?","What motivated you to switch from your previous field to this one?","How many days are remaining until your course starts?","Tell me about your course overview.","If you are only interested in one career area, why didn't you choose a course specific to it?","Why are you resuming your studies after a long gap?","Why did you choose a research-based course instead of others?","Is it possible to apply for your future job without this research program?","Why do you want to pursue a second master's degree?"],"University":["Which university are you applying to?","Why did you choose this university?","Did you consider any other universities in the UK? Why not those?","What facilities does this university provide for international students?","What do you know about the university's academic support services?","What are the benefits of studying at this university compared to others?","What is the ranking of your university?","Do you know out of how many universities it is ranked that way?","How did you research this university?","When did you start your research about studying abroad?","What aspects did you look for while researching universities abroad?","Who recommended this course or university to you?","Have you contacted anyone currently studying at this university or on this course?","What is the address of your university?","What is the distance between your university and the nearest bus stand?","What is the tuition fee for your course?","How much initial deposit have you paid?","How did you phrase your search questions on Google when researching studying abroad?","How do you think this program will help you stand out in a competitive global job market?"],"Country":["Why did you choose the UK for your studies?","Did you consider any other countries? Why not those countries?","Why not study in your home country?","Which universities did you consider in other countries?","Did you apply to any universities in the USA or Canada? Why not those countries?","What aspects of studying in the UK attracted you the most?","What do you know about the UK?","What are the transportation options in your city in the UK?","What is QAA, and what do they do?","Do you have any visa rejections?","Did you ever apply to the UK before?","Do you have any family members or friends in the UK?","How will you handle studying in multicultural and diverse teams?","You're giving answers we hear from many students. Can you give me some unique reasons?","Can you compare the education systems and quality of the UK and your home country?"],"Agent":["Did your agent create this email address for you?","Who writes your SOP?","Does your agent write your SOP?","Did your agent use your email to apply to the university?"],"Career":["What is your career plan?","How is this course linked to your career goals?","Which companies do you want to work for, and why?","What is the expected salary for your desired job (in BDT and GBP)?","What are the job responsibilities of your desired role?","Why are you interested in this career?","Do you have an alternative career plan?","What will you do after completing this course?","Is it possible to apply for your future job without this course?","How will this course improve your career prospects?","What kind of skills will you gain from this course for your future job?","Do you think you will find job vacancies in your field after completing your degree?"],"Sponsor":["Who is your sponsor?","What is your sponsor's profession and monthly/yearly income?","How did your sponsor manage the funds for your education?","How long will your sponsor support your expenses?","Do you need to repay the money to your sponsor?","What is the source of your funds?","Can you show proof of funds if required?","What is your sponsor's bank name and account name?","Is the sponsor's account in your name?","What is the business name of your sponsor?","What kinds of documents have you submitted as financial proof?"],"Accommodation":["Where will you stay in the UK?","Have you arranged accommodation? Is it university or private?","What is the name of your accommodation, and can you spell the street name?","How far is your accommodation from the university?","How much is the rent for your accommodation?","Have you seen photographs of your accommodation?","What facilities does your accommodation provide?","Are you planning to stay alone or with someone?","How will you travel from your accommodation to the campus?","Is your accommodation available for couples?","Will you work under the Post-Study Work (PSW) route? If not, why?"],"Ending":["Do you have any questions for me?","Have you understood all the questions?","Are you satisfied with this interview?","Would you like to add anything?"]};
+var $=function(i){return document.getElementById(i)};var esc=function(x){return String(x==null?"":x).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(function(){e.style.display="none"},4000)}
+function applyTheme(k){document.documentElement.setAttribute("data-theme",k);try{localStorage.setItem("theme",k)}catch(e){};var sel=$("themeSel");if(sel)sel.value=k}
+try{applyTheme(localStorage.getItem("theme")||"navy")}catch(e){}$("themeSel").onchange=function(){applyTheme(this.value)};
+var sb=null;try{if(window.supabase)sb=supabase.createClient(CONFIG.SUPABASE_URL,CONFIG.SUPABASE_KEY)}catch(e){}var ME=null,unl=false,regMode=false,OWN={};
+async function loadMe(){if(!sb)return;var r;try{r=await sb.auth.getSession()}catch(e){return}var ss=r&&r.data&&r.data.session;if(!ss){ME=null;unl=false;meUI();return}var u=ss.user,em=(u.email||"").toLowerCase(),nm=(u.user_metadata&&(u.user_metadata.name||u.user_metadata.full_name))||"",q=await sb.from("staff").select("*").eq("email",em).maybeSingle(),row=q.data;if(q.error){var adm=em==="nurul@aimseducation.com";ME={uid:u.id,email:em,name:nm||em,role:adm?"admin":"interviewer",approved:adm,canFB:adm};unl=ME.approved;meUI();return}if(!row){await sb.from("staff").insert({email:em,uid:u.id,name:nm});row={email:em,name:nm,role:"interviewer",approved:false}}else if(!row.uid){await sb.from("staff").update({uid:u.id}).eq("email",em)}ME={uid:u.id,email:em,name:row.name||nm||em,role:row.role,approved:!!row.approved,canFB:!!row.can_feedback};unl=ME.approved;meUI()}
+function isAdmin(){return!!(sb&&ME&&ME.approved&&ME.role==="admin")}function canFB(){return!sb||!!(ME&&ME.approved&&(ME.role==="admin"||ME.canFB))}function meUI(){$("me").textContent=ME?(ME.name||ME.email)+(ME.role==="admin"?" · admin":"")+(ME.approved?"":" · waiting"):"";$("so").style.display=ME?"":"none";$("tF").style.display=canFB()?"":"none";$("tA").style.display=isAdmin()?"":"none";$("tM").style.display=isAdmin()?"":"none";if(isAdmin())staffRender()}
+function showTab(t){["sv","stuv","qv","rv","fv","av","adm"].forEach(function(id){$(id).style.display="none"});["tS","tStu","tQ","tR","tF","tA","tM"].forEach(function(id){$(id).className=""});var map={S:["sv","tS"],Stu:["stuv","tStu"],Q:["qv","tQ"],R:["rv","tR"],F:["fv","tF"],A:["av","tA"],M:["adm","tM"]};if(map[t]){$(map[t][0]).style.display="";$(map[t][1]).className="p"}if(t=="R")lockUI();if(t=="F")fbsRender();if(t=="Stu")renderStudents();if(t=="Q")renderQBank();if(t=="M")staffRender();if(t=="A"&&!$("afr").getAttribute("src")){$("afr").src=CONFIG.AUDIT_URL;$("aext").href=CONFIG.AUDIT_URL}}
+$("tS").onclick=function(){showTab("S")};$("tStu").onclick=function(){showTab("Stu")};$("tQ").onclick=function(){showTab("Q")};$("tR").onclick=function(){showTab("R")};$("tF").onclick=function(){showTab("F")};$("tA").onclick=function(){showTab("A")};$("tM").onclick=function(){showTab("M")};$("so").onclick=async function(){try{await sb.auth.signOut()}catch(e){}ME=null;unl=false;meUI();lockUI();toast("Signed out.")};
+function lockUI(){if(!sb){$("lk").style.display="";$("ul2").style.display="none";return}$("em").style.display="";$("rn").style.display=regMode?"":"none";$("rg").style.display="";$("pin").placeholder="Password";$("rg").textContent=regMode?"I already have an account":"Create an account";$("pu").textContent=regMode?"Register":"Sign in";$("lkt").textContent=regMode?"Register with your work email and a password (8+ characters). Admin must approve you.":"Sign in to open your students and sessions.";$("lkm").textContent=ME&&!ME.approved?"Your account ("+ME.email+") is waiting for admin approval.":"";var show=!!(ME&&ME.approved);unl=show;$("lk").style.display=show?"none":"";$("ul2").style.display=show?"":"none";if(show){lst()}}
+$("rg").onclick=function(){regMode=!regMode;lockUI()};$("pu").onclick=async function(){var v=$("pin").value;if(!sb){if(v.length<4){toast("4+ chars");return}var p=localStorage.getItem("precasPin")||"";if(!p){localStorage.setItem("precasPin",v);unl=true}else if(v==p)unl=true;else toast("Wrong PIN.");$("pin").value="";lockUI();return}var em=$("em").value.trim().toLowerCase();if(!em||!v){toast("Enter email and password");return}if(regMode){var nm=$("rn").value.trim();if(!nm){toast("Enter full name");return}if(v.length<8){toast("Password 8+ chars");return}var r=await sb.auth.signUp({email:em,password:v,options:{data:{name:nm}}});if(r.error){toast("Registration failed: "+r.error.message);return}if(!(r.data&&r.data.session)){toast("Check email to confirm, then sign in.");regMode=false;$("pin").value="";lockUI();return}}else{var r2=await sb.auth.signInWithPassword({email:em,password:v});if(r2.error){toast("Sign-in failed: "+r2.error.message);return}}$("pin").value="";await loadMe();regMode=false;lockUI()};
+function newCode(){return Array.from(crypto.getRandomValues(new Uint8Array(8))).map(function(b){return(b%36).toString(36)}).join("")}var selectedLayout="standard";(function(){var box=$("layoutPicker");if(!box)return;box.innerHTML=CONFIG.LAYOUTS.map(function(L){return'<label class="small" style="display:inline-flex;gap:4px;margin:2px 8px 2px 0"><input type="radio" name="lay" value="'+L.k+'"'+(L.k=="standard"?" checked":"")+'> '+L.l+'</label>'}).join("");box.addEventListener("change",function(e){if(e.target.name=="lay")selectedLayout=e.target.value})})();
+async function createStudent(){if(!sb||!ME||!ME.approved){toast("Sign in under Sessions first");showTab("R");return}var n=$("fN").value.trim();if(!n){toast("Enter student name");return}var q=picked();if(!q.length){toast("Select at least one question");return}var code=newCode(),d=+$("expDays").value||30,mm=+$("maxMin").value||45;var rec={code:code,display_name:n,crm:$("fC").value.trim(),intake:$("fI").value.trim(),course:$("fT").value.trim(),university:br.n||$("un").value.trim(),interviewer_name:$("fV").value.trim(),officer_id:ME.uid,officer_email:ME.email,status:"registered",expires_at:new Date(Date.now()+d*864e5).toISOString(),allow_retry:$("allowRetry").value==="1",max_minutes:mm,question_ids:q,keypoints_mode:$("kpm").checked,layout:selectedLayout};var r=await sb.from("students").insert(rec);if(r.error){toast("Create failed: "+r.error.message);return}var base=(localStorage.getItem("precasHu")||"").trim()||location.origin+location.pathname;base=base.split("#")[0];var url=base+"#c="+code;$("lko").value=url;$("lkw").style.display="";try{await navigator.clipboard.writeText(url);toast("Link copied. Send to student.")}catch(e){toast("Select and copy the link")}renderStudents()}
+async function renderStudents(){if(!sb||!ME)return;var b=$("stuList"),stats=$("stuStats");if(!b)return;var q=sb.from("students").select("*").order("created_at",{ascending:false});if(!isAdmin())q=q.eq("officer_id",ME.uid);var r=await q;if(r.error){b.innerHTML='<p class="small">Could not load students: '+esc(r.error.message)+'</p>';return}var L=r.data||[];if(isAdmin()){var so=await sb.from("staff").select("uid,name,email");(so.data||[]).forEach(function(s){if(s.uid)OWN[s.uid]=s.name||s.email})}var filt=$("stuFilter").value,srch=($("stuSearch").value||"").toLowerCase();L=L.filter(function(x){return(!filt||x.status==filt)&&(!srch||(x.display_name||"").toLowerCase().indexOf(srch)>-1||(x.crm||"").toLowerCase().indexOf(srch)>-1)});var counts={registered:0,link_sent:0,started:0,completed:0,expired:0};r.data.forEach(function(x){if(counts[x.status]!=null)counts[x.status]++});stats.innerHTML=["registered","link_sent","started","completed","expired"].map(function(k){return'<div class="stat"><b>'+counts[k]+'</b><span>'+k.replace("_"," ")+'</span></div>'}).join("")+'<div class="stat"><b>'+r.data.length+'</b><span>total</span></div>';if(!L.length){b.innerHTML='<p class="small">No students yet. Use Setup to create one.</p>';return}b.innerHTML=L.map(function(s){var url=location.origin+location.pathname+"#c="+s.code,own=OWN[s.officer_id]||s.officer_email||"";return'<div class="card"><h3>'+esc(s.display_name)+(s.crm?' <span class="small">CRM '+esc(s.crm)+'</span>':'')+'</h3><div class="meta">'+esc(s.course||"–")+' · '+esc(s.intake||"–")+'<br>Expires '+new Date(s.expires_at).toLocaleDateString()+ (own?' · '+esc(own):'') +'</div><div style="margin-top:6px"><span class="pill '+s.status+'">'+s.status.replace("_"," ")+'</span></div><div class="actions"><button data-copy="'+url+'">Copy link</button><button data-wa="'+url+'" data-n="'+esc(s.display_name)+'">WhatsApp</button>'+(isAdmin()?'<button data-reassign="'+s.id+'">Reassign</button>':'')+'<button class="danger" data-delstu="'+s.id+'" data-name="'+esc(s.display_name)+'">Delete</button></div></div>'}).join("")}
+$("stuList").onclick=async function(e){var b=e.target;if(!b.dataset)return;if(b.dataset.copy){try{await navigator.clipboard.writeText(b.dataset.copy);toast("Copied")}catch(x){toast("Select and copy")}return}if(b.dataset.wa){var u="https://wa.me/?text="+encodeURIComponent("Hello "+b.dataset.n+", here is your AIMS mock interview link: "+b.dataset.wa);window.open(u,"_blank");return}if(b.dataset.delstu){if(b.dataset.arm){var r=await sb.from("students").delete().eq("id",b.dataset.delstu);toast(r.error?"Delete failed":"Student deleted");renderStudents()}else{b.dataset.arm=1;b.textContent="Sure?";setTimeout(function(){b.textContent="Delete";b.dataset.arm=""},4000)}return}if(b.dataset.reassign&&isAdmin()){var em=prompt("Enter new officer's email:");if(!em)return;var s=await sb.from("staff").select("uid,name,email").eq("email",em.toLowerCase()).single();if(s.error){toast("Officer not found");return}var r2=await sb.rpc("reassign_student",{p_student:b.dataset.reassign,p_officer:s.data.uid,p_officer_email:s.data.email});toast(r2.error?"Reassign failed":"Reassigned");renderStudents();return}};$("stuFilter").onchange=renderStudents;$("stuSearch").oninput=renderStudents;
+var QB={parts:[],questions:{},keypoints:{}};async function renderQBank(){if(!sb||!ME){$("qParts").innerHTML='<p class="small">Sign in to manage questions.</p>';return}var p=await sb.from("q_parts").select("*").order("position"),q2=await sb.from("q_questions").select("*").order("position"),k2=await sb.from("q_keypoints").select("*").order("position");QB.parts=p.data||[];QB.questions={};QB.keypoints={};(q2.data||[]).forEach(function(x){(QB.questions[x.part_id]=QB.questions[x.part_id]||[]).push(x)});(k2.data||[]).forEach(function(x){(QB.keypoints[x.question_id]=QB.keypoints[x.question_id]||[]).push(x)});var admin=isAdmin();var h=QB.parts.map(function(pt){var qs=QB.questions[pt.id]||[];var body=qs.map(function(q){var kp=QB.keypoints[q.id]||[];var kpH=kp.map(function(k){return'<div class="row" style="margin:4px 0;padding:6px;background:var(--bg);border-radius:6px"><span style="flex:1"><b>'+esc(k.text)+'</b> <span class="small">['+esc((k.keywords||[]).join(", ")) +']</span></span>'+(admin?'<button class="small" data-delkp="'+k.id+'">×</button>':'')+'</div>'}).join("");return'<div style="padding:8px 14px;border-top:1px solid var(--bd)"><div class="row" style="margin:0"><span style="flex:1">'+esc(q.text)+'</span>'+(admin?'<button class="small" data-delq="'+q.id+'">Delete</button>':'')+'</div>'+kpH+(admin?'<div class="row" style="margin:4px 0"><input type="text" class="new-kp" data-q="'+q.id+'" placeholder="Add key point" style="flex:1"><input type="text" class="new-kw" data-q="'+q.id+'" placeholder="keywords, comma separated" style="flex:1"><button class="small" data-addkp="'+q.id+'">+ Add key point</button></div>':'')+'</div>'}).join("");return'<details '+(qs.length?"":"open")+'><summary>'+esc(pt.name)+'<span class="n">'+qs.length+'</span></summary>'+body+(admin?'<div class="row" style="padding:8px 14px;border-top:1px solid var(--bd)"><input type="text" class="new-q" data-part="'+pt.id+'" placeholder="Add question…" style="flex:1"><button class="small" data-addq="'+pt.id+'">+ Add question</button></div>':'')+'</details>'}).join("");$("qParts").innerHTML=h||'<p class="small">No parts yet.</p>'}
+$("addPart").onclick=async function(){if(!isAdmin())return;var n=prompt("Part name:");if(!n)return;var r=await sb.from("q_parts").insert({name:n,position:QB.parts.length});if(r.error)toast(r.error.message);else renderQBank()};
+$("qParts").onclick=async function(e){var t=e.target;if(!t.dataset)return;if(t.dataset.addq){var inp=document.querySelector('.new-q[data-part="'+t.dataset.addq+'"]');if(!inp||!inp.value.trim())return;await sb.from("q_questions").insert({part_id:t.dataset.addq,text:inp.value.trim(),position:(QB.questions[t.dataset.addq]||[]).length});renderQBank();return}if(t.dataset.delq){await sb.from("q_questions").delete().eq("id",t.dataset.delq);renderQBank();return}if(t.dataset.addkp){var k=document.querySelector('.new-kp[data-q="'+t.dataset.addkp+'"]'),kw=document.querySelector('.new-kw[data-q="'+t.dataset.addkp+'"]');if(!k||!k.value.trim())return;await sb.from("q_keypoints").insert({question_id:t.dataset.addkp,text:k.value.trim(),keywords:(kw.value||"").split(",").map(function(x){return x.trim()}).filter(Boolean),position:(QB.keypoints[t.dataset.addkp]||[]).length});renderQBank();return}if(t.dataset.delkp){await sb.from("q_keypoints").delete().eq("id",t.dataset.delkp);renderQBank();return}};
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
